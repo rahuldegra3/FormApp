@@ -1,0 +1,23 @@
+<h1>Registered Users</h1>
+<table border="1">
+  <tr>
+    <th>Avatar</th>
+    <th>Name</th>
+    <th>Email</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td>
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar.variant(resize_to_limit: [100, 100]).processed, class: "avatar-img" %>
+        <% else %>
+          No Image
+        <% end %>
+      </td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Register New User", new_user_path %></p>
